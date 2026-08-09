@@ -1,0 +1,7 @@
+*.img
+*.zip
+*.tar
+*.tar.gz
+*.log
+work/
+out/
