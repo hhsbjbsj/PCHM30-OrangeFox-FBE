@@ -92,3 +92,15 @@ Recovery images are device-specific. Do not use this image on unrelated devices.
 
 Test with `fastboot boot` first whenever the bootloader supports it. Keep a known-good
 recovery image available before making permanent changes.
+
+
+## TWRP 12.1 FBE V4（2026-10-26）
+
+PCHM30 新增 TWRP V4 基线：[构建、补丁与实测记录](stable/pchm30-v4/README.md)。
+用户已在当前系统、无锁屏密码的条件下确认自动解密成功及功能正常；
+ADB 确认用户 0 解密状态为 1。核心配置为 `TW_PREPARE_DATA_MEDIA_EARLY := true`。
+
+这是 TWRP 主程序/界面源码构建与既有 Golden AB10 运行基底的组合。
+本目录保留现有橙狐基线；新 TWRP 记录位于独立的 `stable/pchm30-v4` 目录。
+
+实测镜像 SHA256：`2a2382b57e22554ce816594164cc00920bd43b5ab46da5da2716b0e27369ca47`。

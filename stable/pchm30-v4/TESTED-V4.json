@@ -1,0 +1,25 @@
+{
+  "image": "PCHM30-TWRP12.1-FBE-STABLE-V4.img",
+  "sha256": "2a2382b57e22554ce816594164cc00920bd43b5ab46da5da2716b0e27369ca47",
+  "bytes": 54530048,
+  "source": "read-only Recovery partition readback, prefix exactly matches the successful CNB artifact",
+  "recovery_sha256": "67c2609e3003e504c0bb9e11d479e21d7ee04455034782e26aa62d90395542e7",
+  "test_date_asia_shanghai": "2026-10-26",
+  "device": "PCHM30 / OPPO A11x",
+  "screen_lock_at_test": "none",
+  "adb_user_0_decrypted": true,
+  "user_report": "decryption successful; all functions normal",
+  "runtime": "Golden AB10 runtime retained; TWRP12.1 executable and UI rebuilt",
+  "essential_configuration": "TW_PREPARE_DATA_MEDIA_EARLY := true",
+  "dependency_files_by_root": {
+    "system/bin/recovery": 95,
+    "system/bin/adbd": 17,
+    "system/bin/keystore2": 59,
+    "system/bin/hwservicemanager": 25,
+    "system/bin/qseecomd": 23,
+    "system/bin/android.hardware.keymaster@4.0-service-qti": 27,
+    "system/bin/android.hardware.gatekeeper@1.0-service-qti": 18,
+    "vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so": 22
+  },
+  "scope": "validated for this phone and current ROM/data; other ROMs and PIN/pattern/password configurations are not established by this test"
+}

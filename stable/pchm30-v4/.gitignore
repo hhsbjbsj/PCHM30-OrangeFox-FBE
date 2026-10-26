@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+base/assets/reference-header.bin
+base/assets/reference-ramdisk.gz
+downloads/
+artifacts/

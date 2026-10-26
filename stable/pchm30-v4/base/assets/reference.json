@@ -1,0 +1,12 @@
+{
+  "source": "https://github.com/hhsbjbsj/PCHM30-OrangeFox-FBE/releases/tag/v1.0.0",
+  "asset": "PCHM30-OrangeFox-RAMDISK-AB10-GOLDEN-RECOVERY-BINARY.img",
+  "source_image_sha256": "b3d1b6a6d711e95b8b10cf0bbe33eed5ea82cff6ce845183af9210ccc6ebb14b",
+  "ramdisk_sha256": "4a9a6b42fea29258141ee84ceb5c4852e25dc4a859144fd81915b4e6ee3093c7",
+  "cpio_sha256": "5fa77c1ebd87a98b46df9d1da31fbab07032e9a9a0875ff68781b33eee67d518",
+  "header_sha256": "afeb63f25b203d4aac3914fbd84547d7b3209d7b5b85a8348596c39fc282a02a",
+  "reference_kernel_sha256": "39ce9b538651d76859546d102053aaef0a8c228b272dac701cc456b090e03544",
+  "compiled_kernel_sha256": "d83bf44d06a1ed1aeb7c8d597bbccd627458e7619e8606218f33358d145a0f1b",
+  "dtbo_sha256": "b11c7c246bd74a010718124f25ff92f332304bd892b66eecd18b300417dbf270",
+  "note": "Reference header and ramdisk read from the user-provided working release; preserves its userspace runtime, FBE and USB setup."
+}
