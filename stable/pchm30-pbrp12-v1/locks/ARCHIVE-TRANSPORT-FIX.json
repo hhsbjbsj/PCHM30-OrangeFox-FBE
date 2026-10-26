@@ -1,0 +1,11 @@
+{
+  "fix": "CRLF conversion introduced by Windows archive export",
+  "verified_against": "Raw Git blobs from CNB commit 02785b8e2f61dbd5830bf19cb51fc37f3fb2f65f",
+  "source_tree_modified": false,
+  "tested_image_modified": false,
+  "canonical_lf_source_sha256": {
+    "recovery.fstab": "49574e7a649f2ae3b488087bf5a596d09140104971822b6d19c305b36c53578a",
+    "system.prop": "3146b7ded1cfc7773c2df4fc49e7b95d60fac29ceacbcacfe5b075c19387a819",
+    "recovery/root/init.recovery.qcom.rc": "c00232849ced3afc41203618fb7c7883b3846187f2d2a017b816608246ba3bd8"
+  }
+}

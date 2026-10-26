@@ -4,3 +4,12 @@
 *.md text eol=lf
 *.json text eol=lf
 *.xml text eol=lf
+*.fstab text eol=lf
+*.prop text eol=lf
+*.rc text eol=lf
+*.patch text eol=lf
+*.yml text eol=lf
+Dockerfile* text eol=lf
+*.bin binary
+*.gz binary
+*.img binary

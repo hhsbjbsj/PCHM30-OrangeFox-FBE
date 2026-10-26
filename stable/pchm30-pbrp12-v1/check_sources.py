@@ -38,7 +38,7 @@ def check(root, patched=False):
         pins = lock / 'source-sha256.json'
         if pins.is_file():
             for path, expected_sha in json.loads(pins.read_text()).items():
-                assert hashlib.sha256((root / path).read_bytes()).hexdigest() == expected_sha, 'Patched source differs from successful V4: ' + path
+                assert hashlib.sha256((root / path).read_bytes()).hexdigest() == expected_sha, 'Patched source differs from successful PBRP V1: ' + path
         else:
             print('Patched-source hash snapshot is absent; project commits are pinned.')
     print('Frozen PBRP V1 project commits verified:', len(expected))
