@@ -1,0 +1,16 @@
+$:
+  vscode:
+    - runner:
+        tags: cnb:arch:amd64
+        cpus: 16
+      docker:
+        build: .ide/Dockerfile
+      services:
+        - vscode
+      stages:
+        - name: 核验 TWRP 12.1 源码
+          script: |
+            test -f /opt/twrp/build/envsetup.sh
+            grep -q 'revision="android-12.1"' /opt/twrp/.repo/manifests/twrp-default.xml
+            ln -sfn /opt/twrp /workspace/twrp
+            echo "TWRP 12.1 源码准备完成"

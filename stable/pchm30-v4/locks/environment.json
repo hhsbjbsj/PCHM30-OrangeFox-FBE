@@ -1,0 +1,8 @@
+{
+  "os_release": "PRETTY_NAME=\"Ubuntu 22.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"22.04\"\nVERSION=\"22.04.5 LTS (Jammy Jellyfish)\"\nVERSION_CODENAME=jammy\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=jammy\n",
+  "python": "Python 3.10.12",
+  "git": "git version 2.34.1",
+  "manifest_projects": 249,
+  "baseline": "PCHM30 TWRP12.1 FBE V4; 2026-10-26 device-tested image",
+  "binary_reproducibility": "timestamps and unpinned distro package repositories can change rebuilt image hashes"
+}

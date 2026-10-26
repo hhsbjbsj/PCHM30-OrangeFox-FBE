@@ -1,0 +1,88 @@
+diff --git a/FsCrypt.cpp b/FsCrypt.cpp
+index 7505e56..f5bbb01 100644
+--- a/FsCrypt.cpp
++++ b/FsCrypt.cpp
+@@ -423,6 +423,17 @@ static bool load_all_de_keys() {
+         if (!retrieveKey(key_path, kEmptyAuthentication, &de_key)) return false;
+         EncryptionPolicy de_policy;
+         if (!install_storage_key(DATA_MNT_POINT, options, de_key, &de_policy)) return false;
++        // PCHM30_FBE_DIAG_V3: existence only; do not inspect lock or key files.
++        const int pchm30_de_errno = errno;
++        const std::string pchm30_spblob = "/data/system_de/" + std::to_string(user_id) + "/spblob";
++        const bool pchm30_spblob_visible = access(pchm30_spblob.c_str(), F_OK) == 0;
++        const bool pchm30_system_users_visible = access("/data/system/users", F_OK) == 0;
++        LOG(INFO) << "PCHM30_FBE_DIAG_V3 DE_VISIBLE user=" << user_id
++                  << " policy_version=" << options.version
++                  << " hw_wrapped=" << options.use_hw_wrapped_key
++                  << " spblob=" << pchm30_spblob_visible
++                  << " system_users=" << pchm30_system_users_visible;
++        errno = pchm30_de_errno;
+         auto ret = s_de_policies.insert({user_id, de_policy});
+         if (!ret.second && ret.first->second != de_policy) {
+             LOG(ERROR) << "DE policy for user" << user_id << " changed";
+diff --git a/KeyStorage.cpp b/KeyStorage.cpp
+index 51fc4f6..98a2c3f 100644
+--- a/KeyStorage.cpp
++++ b/KeyStorage.cpp
+@@ -177,6 +177,11 @@ bool exportWrappedStorageKey(const KeyBuffer& kmKey, KeyBuffer* key) {
+     if (!keymaster.exportKey(kmKey, &key_temp)) return false;
+     *key = KeyBuffer(key_temp.size());
+     memcpy(reinterpret_cast<void*>(key->data()), key_temp.c_str(), key->size());
++    // PCHM30_FBE_DIAG_V3: lengths only, never key or blob contents.
++    const int pchm30_export_errno = errno;
++    LOG(INFO) << "PCHM30_FBE_DIAG_V3 WRAP_EXPORT input_bytes=" << kmKey.size()
++              << " output_bytes=" << key->size();
++    errno = pchm30_export_errno;
+     return true;
+ }
+ 
+diff --git a/KeyUtil.cpp b/KeyUtil.cpp
+index 9273564..9d5d6b8 100644
+--- a/KeyUtil.cpp
++++ b/KeyUtil.cpp
+@@ -251,11 +251,43 @@ static bool installFsKeyringKey(const std::string& mountpoint, const EncryptionO
+         return false;
+     }
+ 
+-    if (ioctl(fd, FS_IOC_ADD_ENCRYPTION_KEY, arg) != 0) {
++    // PCHM30_FBE_DIAG_V3: metadata only; never log the key payload.
++    const int pchm30_entry_errno = errno;
++    LOG(INFO) << "PCHM30_FBE_DIAG_V3 ADD_KEY_BEGIN mount=" << mountpoint
++              << " policy_version=" << options.version
++              << " hw_wrapped=" << options.use_hw_wrapped_key
++              << " spec_type=" << arg->key_spec.type
++              << " raw_size=" << arg->raw_size
++              << " key_id=" << arg->key_id
++              << " flags=" << arg->__flags
++              << " args_size=" << sizeof(*arg)
++              << " raw_offset=" << __builtin_offsetof(struct fscrypt_add_key_arg, raw)
++              << " flags_offset=" << __builtin_offsetof(struct fscrypt_add_key_arg, __flags);
++    errno = pchm30_entry_errno;
++    const int pchm30_rc = ioctl(fd, FS_IOC_ADD_ENCRYPTION_KEY, arg);
++    const int pchm30_add_errno = errno;
++    LOG(INFO) << "PCHM30_FBE_DIAG_V3 ADD_KEY_END rc=" << pchm30_rc
++              << " errno=" << (pchm30_rc == 0 ? 0 : pchm30_add_errno)
++              << " spec_type=" << arg->key_spec.type;
++    if (pchm30_rc != 0) {
++        errno = pchm30_add_errno;
+         PLOG(ERROR) << "Failed to install fscrypt key to " << mountpoint;
+         return false;
+     }
+-
++#if defined(FS_IOC_GET_ENCRYPTION_KEY_STATUS)
++    struct fscrypt_get_key_status_arg pchm30_status = {};
++    pchm30_status.key_spec = arg->key_spec;
++    const int pchm30_status_rc = ioctl(fd, FS_IOC_GET_ENCRYPTION_KEY_STATUS, &pchm30_status);
++    const int pchm30_status_errno = errno;
++    LOG(INFO) << "PCHM30_FBE_DIAG_V3 KEY_STATUS rc=" << pchm30_status_rc
++              << " errno=" << (pchm30_status_rc == 0 ? 0 : pchm30_status_errno)
++              << " status=" << pchm30_status.status
++              << " status_flags=" << pchm30_status.status_flags
++              << " user_count=" << pchm30_status.user_count;
++#else
++    LOG(INFO) << "PCHM30_FBE_DIAG_V3 KEY_STATUS unavailable_in_build_headers";
++#endif
++    errno = pchm30_add_errno;
+     return true;
+ }
+ 

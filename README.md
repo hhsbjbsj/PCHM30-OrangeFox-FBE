@@ -104,3 +104,11 @@ ADB 确认用户 0 解密状态为 1。核心配置为 `TW_PREPARE_DATA_MEDIA_EA
 本目录保留现有橙狐基线；新 TWRP 记录位于独立的 `stable/pchm30-v4` 目录。
 
 实测镜像 SHA256：`2a2382b57e22554ce816594164cc00920bd43b5ab46da5da2716b0e27369ca47`。
+
+
+V4 固定版本与源码锁定记录：
+
+- [镜像与完整离线源码包](https://github.com/hhsbjbsj/PCHM30-OrangeFox-FBE/releases/tag/pchm30-twrp12.1-fbe-v4)
+- [249 个项目的固定清单及实际补丁](stable/pchm30-v4/locks/manifest.xml)
+- [新环境重建后 828 个运行文件一致的核对记录](stable/pchm30-v4/locks/REPRODUCED.json)
+- CNB 同名标签：`pchm30-twrp12.1-fbe-v4`，提交 `3e1b1d5380f3b5abf63c557b6f1746dabd378c1a`。

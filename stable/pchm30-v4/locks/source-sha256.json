@@ -1,0 +1,6 @@
+{
+  "bootable/recovery/partition.cpp": "c6ac2f5515678bea0bc53a6ce5ca56554d80ee9dd612324c15739b9204644ba5",
+  "system/vold/KeyUtil.cpp": "6ceea7871fa83917dab631a35a683206468cfa6e7cfdab989fcfaeba56986011",
+  "system/vold/FsCrypt.cpp": "ec088cd59079fd161bf0e239cb858f9e6c18ce5f69cd1fda0569b0ba67d0f296",
+  "system/vold/KeyStorage.cpp": "b0de2477fcb06486815b4357eb89ced7cb1557172a9342ffe5b67acd7a44f939"
+}

@@ -1,0 +1,13 @@
+{
+  "phone_tested_image_sha256": "2a2382b57e22554ce816594164cc00920bd43b5ab46da5da2716b0e27369ca47",
+  "rebuilt_image_sha256": "821eee4f31bc8d228bb8409985de4a800cc1827fbe7dcccec11d6ec42a1f2cee",
+  "runtime_payloads_match": true,
+  "entries_compared": 828,
+  "boot_parameters_match": true,
+  "ignored_nonruntime_files": [
+    "ramdisk-files.sha256sum",
+    "ramdisk-files.txt",
+    "system/etc/pchm30-experiment.json"
+  ],
+  "note": "Runtime file contents, owners, modes, kernel, DTBO and boot parameters match. Archive timestamps, provenance marker, inventories and compression bytes may differ. This is a rebuild comparison, not a new phone boot test."
+}

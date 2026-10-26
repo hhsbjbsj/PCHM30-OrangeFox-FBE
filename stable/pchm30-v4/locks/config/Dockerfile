@@ -1,0 +1,55 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates git git-lfs gnupg curl wget \
+    python3 python-is-python3 \
+    build-essential gcc-multilib g++-multilib \
+    flex bison bc zip unzip rsync cpio file patch \
+    zlib1g-dev lib32z1-dev libc6-dev-i386 \
+    libncurses5 libncurses5-dev lib32ncurses5-dev \
+    libssl-dev libelf-dev \
+    x11proto-core-dev libx11-dev libgl1-mesa-dev \
+    libxml2-utils xsltproc fontconfig \
+    openjdk-11-jdk-headless openssh-server \
+    && rm -rf /var/lib/apt/lists/*
+
+# 安装 WebIDE，使用单容器开发环境
+RUN curl -fL --retry 5 https://code-server.dev/install.sh \
+        -o /tmp/install-code-server.sh \
+    && sh /tmp/install-code-server.sh \
+    && rm /tmp/install-code-server.sh
+
+RUN curl -fL --retry 5 \
+    https://storage.googleapis.com/git-repo-downloads/repo \
+    -o /usr/local/bin/repo \
+    && chmod 755 /usr/local/bin/repo
+
+RUN git config --system user.name "Recovery Builder" \
+    && git config --system user.email "builder@example.invalid" \
+    && git lfs install --system
+
+ARG SOURCE_CACHE_VERSION=twrp12.1-v1
+
+RUN echo "Source cache: ${SOURCE_CACHE_VERSION}" \
+    && mkdir -p /opt/twrp \
+    && cd /opt/twrp \
+    && repo init --depth=1 \
+        -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git \
+        -b twrp-12.1 \
+    && repo sync -c -j8 \
+        --no-clone-bundle --no-tags --retry-fetches=3
+
+ARG DEVICE_CACHE_VERSION=1
+
+RUN echo "Device cache: ${DEVICE_CACHE_VERSION}" \
+    && git clone --depth=1 --branch main \
+        https://github.com/hhsbjbsj/android_device_oppo_PCHM30.git \
+        /opt/twrp/device/oppo/PCHM30
+
+WORKDIR /workspace
