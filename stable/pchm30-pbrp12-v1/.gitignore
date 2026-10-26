@@ -1,0 +1,5 @@
+__pycache__/
+base/assets/reference-header.bin
+base/assets/reference-ramdisk.gz
+images/*.img
+*.download

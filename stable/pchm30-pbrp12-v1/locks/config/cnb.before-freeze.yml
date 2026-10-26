@@ -1,0 +1,26 @@
+$:
+  vscode:
+    - runner:
+        tags: cnb:arch:amd64
+        cpus: 16
+      docker:
+        build:  # PCHM30_PBRP_PRELOADED_BUILD
+          dockerfile: .ide/Dockerfile
+          by:
+            - .ide/pbrp-cache/init_sources.py
+            - .ide/pbrp-cache/source-pins.json
+      services:
+        - vscode
+      stages:
+        - name: 核验 TWRP 12.1 源码
+          script: |
+            test -f /opt/twrp/build/envsetup.sh
+            grep -q 'revision="android-12.1"' /opt/twrp/.repo/manifests/twrp-default.xml
+            ln -sfn /opt/twrp /workspace/twrp
+            echo "TWRP 12.1 源码准备完成"
+            # PCHM30_PBRP_PRELOADED_CHECK
+            test -f /opt/pbrp/.pchm30-pbrp12-synced
+            test -f /opt/pbrp/build/envsetup.sh
+            test -f /opt/pbrp/vendor/pb/config/common.mk
+            if [ ! -e /workspace/pbrp ] || [ -L /workspace/pbrp ]; then ln -sfn /opt/pbrp /workspace/pbrp; fi
+            echo "PBRP 12.1 预装源码已就绪；IDE 不再同步源码"

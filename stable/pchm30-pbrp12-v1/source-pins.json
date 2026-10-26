@@ -1,0 +1,17 @@
+{
+  "manifest_url": "https://github.com/PitchBlackRecoveryProject/manifest_pb.git",
+  "manifest_commit": "59ff14c8ad14cd615028f2586d7fec5a98d8d9c7",
+  "manifest_branch": "android-12.1",
+  "projects": {
+    "bootable/recovery": ["android_bootable_recovery", "c3ee88af57d32a842b2a8ff861a72a7bf24da846"],
+    "build/make": ["android_build", "27af0ea018cdc8e8c50e9736d0b4213f5a0af0e4"],
+    "build/soong": ["android_build_soong", "e59447bf940cddd95aaaa378a21101bea53304f3"],
+    "system/core": ["android_system_core", "ac4f36c7eb076ea2c582061a21dfc49eaa71e623"],
+    "system/security": ["android_system_security", "14737db1429b8eebc15568bc748b2cd79ccad5c2"],
+    "system/vold": ["android_system_vold", "3a05a189e3a5e77fe21eb809d343816aa1177591"],
+    "vendor/pb": ["vendor_pb", "31bf0d4cd64bd125a8e5a2e3e54367b9344a515a"],
+    "vendor/utils": ["vendor_utils", "7876c9ba174dffd5acb7079da666998a423cee52"]
+  },
+  "device_url": "https://github.com/hhsbjbsj/android_device_oppo_PCHM30.git",
+  "device_commit": "0431c87a1ebb35a160618ba77dcfe1716a90ff41"
+}

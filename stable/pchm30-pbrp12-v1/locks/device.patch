@@ -1,0 +1,94 @@
+diff --git a/AndroidProducts.mk b/AndroidProducts.mk
+index 4fee958..c7f9ed3 100644
+--- a/AndroidProducts.mk
++++ b/AndroidProducts.mk
+@@ -1,23 +1,2 @@
+-#
+-# Copyright (C) 2026 The Android Open Source Project
+-# Copyright (C) 2026 The TWRP Open Source Project
+-#
+-# Licensed under the Apache License, Version 2.0 (the "License");
+-# you may not use this file except in compliance with the License.
+-# You may obtain a copy of the License at
+-#
+-#     http://www.apache.org/licenses/LICENSE-2.0
+-#
+-# Unless required by applicable law or agreed to in writing, software
+-# distributed under the License is distributed on an "AS IS" BASIS,
+-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-# See the License for the specific language governing permissions and
+-# limitations under the License.
+-#
+-
+-PRODUCT_MAKEFILES := \
+-    $(LOCAL_DIR)/omni_PCHM30.mk
+-
+-COMMON_LUNCH_CHOICES := \
+-    omni_PCHM30-userdebug \
+-    omni_PCHM30-eng
++PRODUCT_MAKEFILES := $(LOCAL_DIR)/pb_PCHM30.mk
++COMMON_LUNCH_CHOICES := pb_PCHM30-eng
+diff --git a/BoardConfig.mk b/BoardConfig.mk
+index 703ac97..d621fbf 100644
+--- a/BoardConfig.mk
++++ b/BoardConfig.mk
+@@ -24,11 +24,6 @@ TARGET_CPU_ABI := arm64-v8a
+ TARGET_CPU_ABI2 :=
+ TARGET_CPU_VARIANT := generic
+ 
+-TARGET_2ND_ARCH := arm
+-TARGET_2ND_ARCH_VARIANT := armv8-a
+-TARGET_2ND_CPU_ABI := armeabi-v7a
+-TARGET_2ND_CPU_ABI2 := armeabi
+-TARGET_2ND_CPU_VARIANT := generic
+ 
+ TARGET_BOARD_PLATFORM := trinket
+ TARGET_BOOTLOADER_BOARD_NAME := trinket
+@@ -71,7 +66,6 @@ TARGET_USERIMAGES_USE_F2FS := true
+ TW_THEME := portrait_hdpi
+ RECOVERY_SDCARD_ON_DATA := true
+ TARGET_RECOVERY_QCOM_RTC_FIX := true
+-TW_EXCLUDE_DEFAULT_USB_INIT := true
+ TW_EXTRA_LANGUAGES := true
+ TW_USE_TOOLBOX := true
+ TW_INPUT_BLACKLIST := "hbtp_vm"
+@@ -86,3 +80,13 @@ TW_INCLUDE_CRYPTO := true
+ TW_INCLUDE_CRYPTO_FBE := true
+ TW_INCLUDE_FBE_METADATA_DECRYPT := true
+ BOARD_SUPPRESS_SECURE_ERASE := true
++TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
++TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
++TARGET_COPY_OUT_VENDOR := vendor
++TW_INCLUDE_LIBRESETPROP := true
++TARGET_NO_BOOTLOADER := true
++
++TARGET_RECOVERY_DEVICE_MODULES += libresetprop.recovery
++
++# Startup test: retain the existing prebuilt kernel and DTBO.
++TW_PREPARE_DATA_MEDIA_EARLY := true
+diff --git a/device.mk b/device.mk
+index b55c032..0b02a65 100644
+--- a/device.mk
++++ b/device.mk
+@@ -24,5 +24,4 @@ PRODUCT_COPY_FILES += \
+     $(LOCAL_PATH)/recovery/root/init.recovery.qcom.rc:root/init.recovery.qcom.rc \
+     $(LOCAL_PATH)/recovery/root/ueventd.qcom.rc:root/ueventd.qcom.rc
+ 
+-PRODUCT_COPY_FILES += \
+-    $(LOCAL_PATH)/prebuilt/dtbo.img:$(PRODUCT_OUT)/dtbo.img
++# DTBO is installed by BOARD_PREBUILT_DTBOIMAGE.
+diff --git a/vendorsetup.sh b/vendorsetup.sh
+old mode 100644
+new mode 100755
+index c3f535d..4c70a83
+--- a/vendorsetup.sh
++++ b/vendorsetup.sh
+@@ -1,7 +1 @@
+-#
+-# Copyright (C) 2026 The Android Open Source Project
+-# Copyright (C) 2026 The TWRP Open Source Project
+-#
+-
+-add_lunch_combo omni_PCHM30-userdebug
+-add_lunch_combo omni_PCHM30-eng
++# Product registered by AndroidProducts.mk.

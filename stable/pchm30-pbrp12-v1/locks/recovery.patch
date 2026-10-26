@@ -1,0 +1,12 @@
+diff --git a/partition.cpp b/partition.cpp
+index 84a027d..ec8209e 100755
+--- a/partition.cpp
++++ b/partition.cpp
+@@ -695,6 +695,7 @@ void TWPartition::Setup_Data_Partition(bool Display_Error) {
+ 
+ #ifdef TW_INCLUDE_CRYPTO
+ 	#ifdef TW_PREPARE_DATA_MEDIA_EARLY
++	LOGINFO("PCHM30_PBRP12 EARLY_MEDIA_BEFORE_DE\n");
+ 	if (datamedia)
+ 		Setup_Data_Media();
+ 	#endif

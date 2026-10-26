@@ -1,0 +1,31 @@
+{
+  "version": "PCHM30 PBRP 4.0 Android12.1 FBE Stable V1 (UNOFFICIAL)",
+  "tag": "pchm30-pbrp12.1-fbe-v1",
+  "image": "PCHM30-PBRP12.1-FBE-STABLE-V1.img",
+  "bytes": 56119296,
+  "sha256": "e2cdd26378bf9dc0070390a7e5c1312bb5463617a08392f3c13258fa728f0aa0",
+  "recovery_binary_sha256": "1c6cec0a13c431071dd24588b833f4747092d82c352e1f4031c02ea9ce613fea",
+  "kernel_sha256": "d83bf44d06a1ed1aeb7c8d597bbccd627458e7619e8606218f33358d145a0f1b",
+  "dtbo_sha256": "b11c7c246bd74a010718124f25ff92f332304bd892b66eecd18b300417dbf270",
+  "reference_ramdisk_sha256": "4a9a6b42fea29258141ee84ceb5c4852e25dc4a859144fd81915b4e6ee3093c7",
+  "original_cnb_recipe_commit": "02785b8e2f61dbd5830bf19cb51fc37f3fb2f65f",
+  "pinned_projects": 253,
+  "user_reported": {
+    "boots": true,
+    "touch": true,
+    "fbe_decryption": true,
+    "all_functions_normal": true
+  },
+  "independently_observed": {
+    "phone_partition_prefix_matches_image": true,
+    "live_recovery_binary_matches": true,
+    "boot_image_id_valid": true,
+    "elf_dependency_and_versioned_symbols_resolved": true,
+    "early_media_marker_present": true,
+    "recovery_log_reports_user0_decrypted": true,
+    "recovery_log_reports_default_password_path": true
+  },
+  "scope": "User current system and data; default-password decryption path. Custom PIN/pattern/password and other ROMs not tested.",
+  "embedded_experiment_metadata": "Preserved unchanged. Build-time not-tested fields are superseded by this separate device-test record.",
+  "raw_device_logs_and_partition_tail": "Kept locally; excluded from public archive."
+}

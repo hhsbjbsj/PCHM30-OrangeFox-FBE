@@ -1,0 +1,12 @@
+{
+  "bootable/recovery/partition.cpp": "07fb6b41337b5411b3552e081ea90321c278dbe213d0bf5970007ddb40bbbf32",
+  "device/oppo/PCHM30/AndroidProducts.mk": "1c7ca7b8392fb07559491ace66566916d0ed9926ba7e1554a791bb73e5161e3b",
+  "device/oppo/PCHM30/BoardConfig.mk": "d602c4cab91d4974a51500d09e5fe6cbdd0c759a6646f1a6a9d2f5b93210ae1c",
+  "device/oppo/PCHM30/device.mk": "57883ac83dbff92a4093018b1660a2c5cba726f5dadd15ce96027776e081ebe2",
+  "device/oppo/PCHM30/pb_PCHM30.mk": "3931a5de27a9dc428873142d1d37703a07f4b4e4b618861e51e6937bd6111ad2",
+  "device/oppo/PCHM30/recovery.fstab": "5500fe0c6b9512d2b450da51239c71d9d4ef785f51a4dde2ceed8d725d91a59b",
+  "device/oppo/PCHM30/system.prop": "301f09da56f3d821061ab2ba7728a02b61ecb2c3e3c80896c9d8c91dd7522023",
+  "device/oppo/PCHM30/vendorsetup.sh": "88ca746e6b800b19e0215f2c8d0b8ab8c8dbe050bc0fda30f6a9099fe647595b",
+  "device/oppo/PCHM30/recovery/root/init.recovery.qcom.rc": "bb5ead94b095d2cfbdc465b4b7a3b0b569f518b2f2eb2f45ef16be3186fcaa61",
+  "device/oppo/PCHM30/recovery/root/system/bin/postscreenunblank.sh": "b2269f541019a84a5df4bb6103e3a6351583d1529cb7198711b82de785f30dc0"
+}
