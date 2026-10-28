@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-28",
+  "phone_tools": [
+    {
+      "test": "toybox-and-existing-standalone-tools",
+      "exit_code": 0,
+      "passed": true,
+      "output": "ui_print RECOVERY TOOL CHECK PASSED. No partitions were written.\r\nui_print\r\n",
+      "partition_writes_performed": false
+    },
+    {
+      "test": "static-arm64-busybox",
+      "exit_code": 0,
+      "passed": true,
+      "output": "ui_print RECOVERY TOOL CHECK PASSED. No partitions were written.\r\nui_print\r\n",
+      "partition_writes_performed": false
+    },
+    {
+      "test": "all-tools-missing-must-fail",
+      "exit_code": 1,
+      "passed": true,
+      "output": "ui_print ERROR: Recovery tool unavailable: blockdev; no partitions were written.\r\nui_print\r\n",
+      "partition_writes_performed": false
+    }
+  ],
+  "native_installer_io": [
+    {
+      "provider": "toybox-existing",
+      "passed": true,
+      "zip_extract_sha256_verified": true,
+      "corrupt_zip_rejected_by_expected_sha256_or_pipeline_failure": true,
+      "corruption_rejection_mechanism": "expected SHA256",
+      "dd_seek_notrunc_verified_in_tmp_file": true,
+      "recovery_block_size_read_only": true,
+      "partition_writes": false
+    },
+    {
+      "provider": "busybox-static",
+      "passed": true,
+      "zip_extract_sha256_verified": true,
+      "corrupt_zip_rejected_by_expected_sha256_or_pipeline_failure": true,
+      "corruption_rejection_mechanism": "expected SHA256",
+      "dd_seek_notrunc_verified_in_tmp_file": true,
+      "recovery_block_size_read_only": true,
+      "partition_writes": false
+    }
+  ],
+  "isolated_real_prepdecrypt_script": [
+    {
+      "mode": "sar",
+      "passed": true,
+      "real_properties_or_partitions_modified": false,
+      "execution": "real prepdecrypt script and static arm64 BusyBox inside isolated RAM chroot; mocked mount/getprop/resetprop"
+    },
+    {
+      "mode": "non-sar",
+      "passed": true,
+      "real_properties_or_partitions_modified": false,
+      "execution": "real prepdecrypt script and static arm64 BusyBox inside isolated RAM chroot; mocked mount/getprop/resetprop"
+    },
+    {
+      "mode": "missing-system-buildprop",
+      "passed": true,
+      "real_properties_or_partitions_modified": false,
+      "execution": "real prepdecrypt script and static arm64 BusyBox inside isolated RAM chroot; mocked mount/getprop/resetprop"
+    }
+  ],
+  "actual_readonly_spl_check": {
+    "recovery": "2026-07-01",
+    "system": "2026-10-01",
+    "system_mount": "ro,noload at a separate tmp path"
+  },
+  "all_existing_installer_partition_and_hash_guards_retained": true,
+  "candidate_image": {
+    "kind": "ramdisk-rebuild-from-tested-image",
+    "built_utc": "2026-10-28T11:37:30.959710+00:00",
+    "base_image_sha256": "9d9dd842fac9a4c54b5b821aed6f803b6d75920b54044a8f3e73448cc539205f",
+    "base_sdk": 32,
+    "sdk_upgrade_performed": false,
+    "busybox_sha256": "c629fce4b0dd3ba9775f851d0941e74582115f423258d3a79800f2bd11d30f5c",
+    "data_policy": "ext4 fscrypt v1 wrappedkey; DE keys remain /data/unencrypted/key",
+    "metadata_keydirectory_repointed": false,
+    "phone_boot_tested": false,
+    "decryption_fixed_verified": false,
+    "changed_paths": [
+      "init.recovery.qcom.rc",
+      "init.recovery.qcom_decrypt.rc",
+      "sbin/busybox",
+      "sbin/sh",
+      "system/bin/merge-fstab.sh",
+      "system/bin/pchm30-bootflow-a2.sh",
+      "system/bin/postscreenunblank.sh",
+      "system/bin/prepdecrypt.sh",
+      "system/etc/recovery.fstab",
+      "system/etc/recovery.fstab.fbev1",
+      "system/etc/recovery.fstab.pchm30_a16",
+      "system/etc/recovery.fstab.pchm30_fbe"
+    ],
+    "image": "PCHM30-PBRP-A16-INTEGRATION-TEST1.img",
+    "sha256": "63d671f7a7cecc249330ecfe6ef94052e5946123814ba0e7c595d452e9aed50c",
+    "bytes": 57032704,
+    "boot_id_valid": true,
+    "kernel_unchanged": true,
+    "dtbo_unchanged": true,
+    "all_original_runtime_libraries_unchanged": true,
+    "dependency_counts": {
+      "system/bin/recovery": 95,
+      "system/bin/adbd": 17,
+      "system/bin/keystore2": 59,
+      "system/bin/hwservicemanager": 25,
+      "system/bin/qseecomd": 23,
+      "system/bin/android.hardware.keymaster@4.0-service-qti": 27,
+      "system/bin/android.hardware.gatekeeper@1.0-service-qti": 18,
+      "vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so": 22
+    },
+    "static_shell_present": true
+  },
+  "candidate_phone_boot_tested": false,
+  "candidate_fbe_decryption_verified": false,
+  "twrp14_upgrade_performed": false
+}

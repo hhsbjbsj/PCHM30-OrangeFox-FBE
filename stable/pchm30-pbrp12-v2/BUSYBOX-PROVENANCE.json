@@ -1,0 +1,11 @@
+{
+  "source": "https://raw.githubusercontent.com/Magisk-Modules-Repo/busybox-ndk/ad6700620120e3c475df05b0f8bfa7a40e741ee0/busybox-arm64",
+  "source_repository": "https://github.com/Magisk-Modules-Repo/busybox-ndk",
+  "source_commit": "ad6700620120e3c475df05b0f8bfa7a40e741ee0",
+  "build_configuration_source": "https://github.com/osm0sis/android-busybox-ndk",
+  "architecture": "AArch64",
+  "static_no_interpreter_or_dynamic_segment": true,
+  "bytes": 1498688,
+  "sha256": "c629fce4b0dd3ba9775f851d0941e74582115f423258d3a79800f2bd11d30f5c",
+  "license": "GPL-2.0-only"
+}

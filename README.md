@@ -2,6 +2,12 @@
 
 A working OrangeFox recovery build for **OPPO A11x / PCHM30 / OP4A54** based on the SM6125 platform.
 
+## PBRP V2：Android 16 Data 解密已实测（2026-10-28）
+
+[下载新发布 pchm30-pbrp12.1-fbe-v2](https://github.com/hhsbjbsj/PCHM30-OrangeFox-FBE/releases/tag/pchm30-pbrp12.1-fbe-v2)。
+集成静态 BusyBox、真实系统 SPL 同步和 ext4 修复，仍为 SDK32 基底。
+详见 [发布说明](docs/PBRP12-FBE-V2.md) 和 [源码](stable/pchm30-pbrp12-v2/README.md)。下文保留原 OrangeFox 基线记录。
+
 ## Status
 
 Tested on the target device:

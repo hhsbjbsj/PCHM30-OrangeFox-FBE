@@ -1,0 +1,21 @@
+{
+  "device": "OPPO A11x PCHM30",
+  "date": "2026-10-28",
+  "image": "PCHM30-PBRP12.1-FBE-V2-A16.img",
+  "sha256": "63d671f7a7cecc249330ecfe6ef94052e5946123814ba0e7c595d452e9aed50c",
+  "bytes": 57032704,
+  "evidence": "Owner reported successful decryption after manually installing the exact TEST1 candidate; asset renamed without changing bytes",
+  "booted_on_device": true,
+  "android16_data_decryption_owner_confirmed": true,
+  "test_system": "LineageOS 23.2 / Android16",
+  "system_security_patch": "2026-10-01",
+  "busybox_and_toybox_native_tool_tests_passed": true,
+  "new_image_all_other_functions_retested": false,
+  "base_sdk": 32,
+  "twrp14_upgrade_performed": false,
+  "new_cplusplus_source_compilation_performed": false,
+  "build_method": "Rebuilt ramdisk on the tested PBRP image; original kernel, DTBO, recovery executable and platform libraries retained",
+  "original_test_image_name": "PCHM30-PBRP-A16-INTEGRATION-TEST1.img",
+  "source_repo": "hhsbjbsj/PCHM30-OrangeFox-FBE",
+  "tag": "pchm30-pbrp12.1-fbe-v2"
+}

@@ -1,0 +1,2 @@
+/dev/block/bootdevice/by-name/metadata /metadata ext4 noatime,nosuid,nodev wait
+/dev/block/bootdevice/by-name/userdata /data ext4 noatime,nosuid,nodev,barrier=1,noauto_da_alloc,discard,inlinecrypt,lazytime latemount,wait,check,fileencryption=ice,wrappedkey,quota
