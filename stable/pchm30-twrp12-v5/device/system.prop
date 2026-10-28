@@ -1,0 +1,21 @@
+#
+# System Properties for OPPO A11x (PCHM30 / trinket)
+#
+
+# Platform and Hardware
+ro.board.platform=trinket
+ro.hardware=qcom
+ro.arch=arm64-v8a
+
+# Display and Graphics
+ro.sf.lcd_density=320
+ro.opengles.version=196610
+
+# USB and Debugging
+persist.sys.usb.config=mtp,adb
+ro.adb.secure=0
+ro.secure=0
+ro.debuggable=1
+
+# Dynamic partition flag (false for classic layout)
+ro.boot.dynamic_partitions=false
